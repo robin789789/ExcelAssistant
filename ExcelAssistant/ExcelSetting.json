@@ -1,0 +1,144 @@
+{
+  "RegionList": [
+    {
+      "TargetStart": {
+        "Column": "G",
+        "Row": 5,
+        "DotFormat": "0.000"
+      },
+      "TargetEnd": {
+        "Column": "G",
+        "Row": 116,
+        "DotFormat": "0.000"
+      },
+      "SheetName": "崑山",
+      "RangeStart": {
+        "Column": "K",
+        "Row": 5,
+        "DotFormat": "0.000"
+      },
+      "RangeEnd": {
+        "Column": "V",
+        "Row": 116,
+        "DotFormat": "0.000"
+      }
+    },
+    {
+      "TargetStart": {
+        "Column": "G",
+        "Row": 5,
+        "DotFormat": "0.000"
+      },
+      "TargetEnd": {
+        "Column": "G",
+        "Row": 13,
+        "DotFormat": "0.000"
+      },
+      "SheetName": "北部",
+      "RangeStart": {
+        "Column": "K",
+        "Row": 5,
+        "DotFormat": "0.000"
+      },
+      "RangeEnd": {
+        "Column": "V",
+        "Row": 13,
+        "DotFormat": "0.000"
+      }
+    },
+    {
+      "TargetStart": {
+        "Column": "G",
+        "Row": 5,
+        "DotFormat": "0.000"
+      },
+      "TargetEnd": {
+        "Column": "G",
+        "Row": 24,
+        "DotFormat": "0.000"
+      },
+      "SheetName": "南部",
+      "RangeStart": {
+        "Column": "K",
+        "Row": 5,
+        "DotFormat": "0.000"
+      },
+      "RangeEnd": {
+        "Column": "V",
+        "Row": 24,
+        "DotFormat": "0.000"
+      }
+    }
+  ],
+  "PerformenceList": [
+    {
+      "CompleteStart": {
+        "Column": "X",
+        "Row": 5,
+        "DotFormat": "0.000"
+      },
+      "CompleteEnd": {
+        "Column": "X",
+        "Row": 116,
+        "DotFormat": "0.000"
+      },
+      "SheetName": "崑山績效",
+      "RangeStart": {
+        "Column": "W",
+        "Row": 5,
+        "DotFormat": "0.000"
+      },
+      "RangeEnd": {
+        "Column": "W",
+        "Row": 116,
+        "DotFormat": "0.000"
+      }
+    },
+    {
+      "CompleteStart": {
+        "Column": "X",
+        "Row": 5,
+        "DotFormat": "0.000"
+      },
+      "CompleteEnd": {
+        "Column": "X",
+        "Row": 13,
+        "DotFormat": "0.000"
+      },
+      "SheetName": "北部績效",
+      "RangeStart": {
+        "Column": "W",
+        "Row": 5,
+        "DotFormat": "0.000"
+      },
+      "RangeEnd": {
+        "Column": "W",
+        "Row": 13,
+        "DotFormat": "0.000"
+      }
+    },
+    {
+      "CompleteStart": {
+        "Column": "X",
+        "Row": 5,
+        "DotFormat": "0.000"
+      },
+      "CompleteEnd": {
+        "Column": "X",
+        "Row": 24,
+        "DotFormat": "0.000"
+      },
+      "SheetName": "南部績效",
+      "RangeStart": {
+        "Column": "W",
+        "Row": 5,
+        "DotFormat": "0.000"
+      },
+      "RangeEnd": {
+        "Column": "W",
+        "Row": 24,
+        "DotFormat": "0.000"
+      }
+    }
+  ]
+}
