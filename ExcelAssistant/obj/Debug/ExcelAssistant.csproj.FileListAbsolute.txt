@@ -1,0 +1,10 @@
+C:\Users\robin\source\repos\ExcelAssistant\ExcelAssistant\bin\Debug\ExcelAssistant.exe.config
+C:\Users\robin\source\repos\ExcelAssistant\ExcelAssistant\bin\Debug\ExcelAssistant.exe
+C:\Users\robin\source\repos\ExcelAssistant\ExcelAssistant\bin\Debug\ExcelAssistant.pdb
+C:\Users\robin\source\repos\ExcelAssistant\ExcelAssistant\obj\Debug\ExcelAssistant.csproj.AssemblyReference.cache
+C:\Users\robin\source\repos\ExcelAssistant\ExcelAssistant\obj\Debug\ExcelAssistant.csproj.SuggestedBindingRedirects.cache
+C:\Users\robin\source\repos\ExcelAssistant\ExcelAssistant\obj\Debug\ExcelAssistant.Properties.Resources.resources
+C:\Users\robin\source\repos\ExcelAssistant\ExcelAssistant\obj\Debug\ExcelAssistant.csproj.GenerateResource.cache
+C:\Users\robin\source\repos\ExcelAssistant\ExcelAssistant\obj\Debug\ExcelAssistant.csproj.CoreCompileInputs.cache
+C:\Users\robin\source\repos\ExcelAssistant\ExcelAssistant\obj\Debug\ExcelAssistant.exe
+C:\Users\robin\source\repos\ExcelAssistant\ExcelAssistant\obj\Debug\ExcelAssistant.pdb
