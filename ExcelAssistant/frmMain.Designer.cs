@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.bntGenerate = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbFilePath = new System.Windows.Forms.TextBox();
             this.btnLoad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -43,13 +43,13 @@
             this.bntGenerate.UseVisualStyleBackColor = true;
             this.bntGenerate.Click += new System.EventHandler(this.bntGenerate_Click);
             // 
-            // textBox1
+            // tbFilePath
             // 
-            this.textBox1.Location = new System.Drawing.Point(71, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(566, 25);
-            this.textBox1.TabIndex = 1;
+            this.tbFilePath.Location = new System.Drawing.Point(71, 29);
+            this.tbFilePath.Name = "tbFilePath";
+            this.tbFilePath.ReadOnly = true;
+            this.tbFilePath.Size = new System.Drawing.Size(566, 25);
+            this.tbFilePath.TabIndex = 1;
             // 
             // btnLoad
             // 
@@ -67,7 +67,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(769, 82);
             this.Controls.Add(this.btnLoad);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbFilePath);
             this.Controls.Add(this.bntGenerate);
             this.Name = "FrmMain";
             this.Text = "ExcelAssitant";
@@ -79,7 +79,7 @@
         #endregion
 
         private System.Windows.Forms.Button bntGenerate;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbFilePath;
         private System.Windows.Forms.Button btnLoad;
     }
 }

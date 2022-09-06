@@ -20,7 +20,6 @@ namespace ExcelAssistant
         private msExcel.Workbook workBook = null;
         private string settingJson = string.Empty;
         private ExcelSetting excelSetting = new ExcelSetting();
-        private string path = string.Empty;
 
         private void loadingSetting()
         {
@@ -32,6 +31,8 @@ namespace ExcelAssistant
                 excelSetting = excelSetting.JsonToObject(settingJson);
             else
                 excelSetting.MakeExample();
+
+            tbFilePath.Text = excelSetting.Setting.DefaultPath;
         }
 
         private void saveSetting()
@@ -43,22 +44,23 @@ namespace ExcelAssistant
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            path = GetOpenFileName(xlsxTitle, xlsxFilter);
+            excelSetting.Setting.DefaultPath = GetOpenFileName(xlsxTitle, xlsxFilter);
 
-            if (path == string.Empty)
+            if (excelSetting.Setting.DefaultPath == string.Empty)
                 return;
 
-            textBox1.Text = path;
+            tbFilePath.Text = excelSetting.Setting.DefaultPath;
+
         }
 
         private void bntGenerate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(path) || isFileOpen(path))
+            if (string.IsNullOrEmpty(excelSetting.Setting.DefaultPath) || isFileOpen(excelSetting.Setting.DefaultPath))
                 return;
 
             try
             {
-                getExcelApp(path);
+                getExcelApp(excelSetting.Setting.DefaultPath);
 
                 if (excelSetting.PerformenceList.Count != excelSetting.RegionList.Count)
                 {
@@ -70,10 +72,14 @@ namespace ExcelAssistant
                     generatePerformenceColor(excelSetting.RegionList[i], excelSetting.PerformenceList[i]);
                 }
 
-                MessageBox.Show("Done", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("Done", "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 exitExcelApp();
 
-                OpenExcelByPath(path);
+                if (excelSetting.Setting.OpenExcelAfterGenerate)
+                    OpenExcelByPath(excelSetting.Setting.DefaultPath);
+
+                if (excelSetting.Setting.CloseAfterGenerate)
+                    this.Close();
             }
             catch (Exception ex)
             {
@@ -116,10 +122,10 @@ namespace ExcelAssistant
 
             for (int i = 0; i < regionFormat.GetRowsCount(); i++)
             {
-                var tempTotalMonth= performenceSheet.get_Range(performenceFormat.RangeStart.Column + (performenceFormat.RangeStart.Row + i).ToString()).Value2;//已裝月份
+                var tempTotalMonth = performenceSheet.get_Range(performenceFormat.RangeStart.Column + (performenceFormat.RangeStart.Row + i).ToString()).Value2;//已裝月份
                 if (null != tempTotalMonth)
                     totalMonth = tempTotalMonth;
-                
+
                 color = GetColorByCondition(totalMonth);//選擇顏色
 
                 var temp = regionSheet.get_Range(regionFormat.TargetStart.Column + (regionFormat.TargetStart.Row + i).ToString()).Value2;//得到日子總數，要轉Date

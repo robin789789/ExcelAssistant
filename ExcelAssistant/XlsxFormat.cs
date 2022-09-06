@@ -9,6 +9,8 @@ namespace ExcelAssistant
 {
     public class ExcelSetting
     {
+        public AppSetting Setting = new AppSetting();
+
         public List<RegionSheetFormat> RegionList { get; set; } = new List<RegionSheetFormat>();
 
         public List<PerformenceSheetFormat> PerformenceList { get; set; } = new List<PerformenceSheetFormat>();
@@ -44,8 +46,19 @@ namespace ExcelAssistant
                 CompleteStart = new Cell("X", 5),
                 CompleteEnd = new Cell("X", 116),
             });
+
+            Setting.OpenExcelAfterGenerate = true;
+            Setting.CloseAfterGenerate = true;
         }
 
+        public class AppSetting
+        {
+            public string DefaultPath { get; set; } = String.Empty;
+
+            public bool OpenExcelAfterGenerate { get; set; } = false;
+
+            public bool CloseAfterGenerate { get; set; } = false;
+        }
     }
 
     public class XlsxFormat
@@ -252,7 +265,7 @@ namespace ExcelAssistant
                 {
                     var result = MessageBox.Show("檔案目前處於開啟狀態，請關閉後重試。", "Warning", MessageBoxButtons.RetryCancel, MessageBoxIcon.Exclamation);
 
-                    if(result==DialogResult.Cancel)
+                    if (result == DialogResult.Cancel)
                         return true;
                 }
             }
