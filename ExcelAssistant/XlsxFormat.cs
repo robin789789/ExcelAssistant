@@ -231,5 +231,32 @@ namespace ExcelAssistant
         {
             return JsonConvert.SerializeObject(dynamic, Formatting.Indented);
         }
+
+        public static void OpenExcelByPath(string path)
+        {
+            System.Diagnostics.Process.Start(path);
+        }
+
+        public static bool isFileOpen(string filename)
+        {
+            bool isOpen = true;
+            while (isOpen)
+            {
+                try
+                {
+                    System.IO.FileStream stream = System.IO.File.OpenWrite(filename);
+                    stream.Close();
+                    isOpen = false;
+                }
+                catch
+                {
+                    var result = MessageBox.Show("檔案目前處於開啟狀態，請關閉後重試。", "Warning", MessageBoxButtons.RetryCancel, MessageBoxIcon.Exclamation);
+
+                    if(result==DialogResult.Cancel)
+                        return true;
+                }
+            }
+            return false;
+        }
     }
 }

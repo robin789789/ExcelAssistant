@@ -53,6 +53,9 @@ namespace ExcelAssistant
 
         private void bntGenerate_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(path) || isFileOpen(path))
+                return;
+
             try
             {
                 getExcelApp(path);
@@ -67,8 +70,10 @@ namespace ExcelAssistant
                     generatePerformenceColor(excelSetting.RegionList[i], excelSetting.PerformenceList[i]);
                 }
 
-                MessageBox.Show("Done", "Infoamtion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("Done", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 exitExcelApp();
+
+                OpenExcelByPath(path);
             }
             catch (Exception ex)
             {
@@ -105,13 +110,16 @@ namespace ExcelAssistant
             msExcel.Worksheet regionSheet = (msExcel.Worksheet)workBook.Sheets[regionFormat.SheetName];
             msExcel.Worksheet performenceSheet = (msExcel.Worksheet)workBook.Sheets[performenceFormat.SheetName];
             msExcel.Range paintRange;
-            double totalStartDays = 0, totalEndDays, totalMonth;
+            double totalStartDays = 0, totalEndDays, totalMonth = 0;
             int color, paintStartMonth, paintEndMonth;
             string leftTop, rightBottom, currentPaintRow;
 
             for (int i = 0; i < regionFormat.GetRowsCount(); i++)
             {
-                totalMonth = performenceSheet.get_Range(performenceFormat.RangeStart.Column + (performenceFormat.RangeStart.Row + i).ToString()).Value2;//已裝月份
+                var tempTotalMonth= performenceSheet.get_Range(performenceFormat.RangeStart.Column + (performenceFormat.RangeStart.Row + i).ToString()).Value2;//已裝月份
+                if (null != tempTotalMonth)
+                    totalMonth = tempTotalMonth;
+                
                 color = GetColorByCondition(totalMonth);//選擇顏色
 
                 var temp = regionSheet.get_Range(regionFormat.TargetStart.Column + (regionFormat.TargetStart.Row + i).ToString()).Value2;//得到日子總數，要轉Date
@@ -146,13 +154,13 @@ namespace ExcelAssistant
                     rightBottom = regionFormat.GetColCellByIndex(12) + currentPaintRow;
 
                     paintRange = (msExcel.Range)regionSheet.get_Range(leftTop, rightBottom);
-                    paintRange.Interior.Color = White;//整列塗白
+                    paintRange.Interior.Color = White;//先1~12整列塗白
 
                     leftTop = regionFormat.GetColCellByIndex(paintStartMonth) + currentPaintRow;
                     rightBottom = regionFormat.GetColCellByIndex(paintEndMonth) + currentPaintRow;
 
                     paintRange = (msExcel.Range)regionSheet.get_Range(leftTop, rightBottom);
-                    paintRange.Interior.Color = color;
+                    paintRange.Interior.Color = color;//範圍內的月份上色
                 }
                 else if (paintEndMonth <= paintStartMonth)
                 {
