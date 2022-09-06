@@ -95,7 +95,7 @@ namespace ExcelAssistant
 
         public int GetRowsCount()
         {
-            return RangeEnd.Row - RangeStart.Row;
+            return RangeEnd.Row - RangeStart.Row + 1;
         }
 
     }

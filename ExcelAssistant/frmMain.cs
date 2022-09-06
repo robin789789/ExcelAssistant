@@ -153,12 +153,12 @@ namespace ExcelAssistant
                 //eg.12~3 (12,1,2,3)
 
                 currentPaintRow = (regionFormat.RangeStart.Row + i).ToString();
+                leftTop = regionFormat.GetColCellByIndex(1) + currentPaintRow;
+                rightBottom = regionFormat.GetColCellByIndex(12) + currentPaintRow;
+                paintRange = (msExcel.Range)regionSheet.get_Range(leftTop, rightBottom);
+
                 if (paintEndMonth > paintStartMonth)
                 {
-                    leftTop = regionFormat.GetColCellByIndex(1) + currentPaintRow;
-                    rightBottom = regionFormat.GetColCellByIndex(12) + currentPaintRow;
-
-                    paintRange = (msExcel.Range)regionSheet.get_Range(leftTop, rightBottom);
                     paintRange.Interior.Color = White;//先1~12整列塗白
 
                     leftTop = regionFormat.GetColCellByIndex(paintStartMonth) + currentPaintRow;
@@ -167,22 +167,33 @@ namespace ExcelAssistant
                     paintRange = (msExcel.Range)regionSheet.get_Range(leftTop, rightBottom);
                     paintRange.Interior.Color = color;//範圍內的月份上色
                 }
-                else if (paintEndMonth <= paintStartMonth)
+                else if (paintEndMonth < paintStartMonth)
                 {
-                    leftTop = regionFormat.GetColCellByIndex(1) + currentPaintRow;
-                    rightBottom = regionFormat.GetColCellByIndex(12) + currentPaintRow;
-
-                    paintRange = (msExcel.Range)regionSheet.get_Range(leftTop, rightBottom);
                     paintRange.Interior.Color = color;//整列變色
 
                     if (Math.Abs(paintStartMonth - paintEndMonth) > 1)//避免互相抵消 //eg. start at 10 ,end at 9
                     {
-                        leftTop = regionFormat.GetColCellByIndex(paintStartMonth - 1) + currentPaintRow; //開始月份也塗色
-                        rightBottom = regionFormat.GetColCellByIndex(paintEndMonth + 1) + currentPaintRow;//結束也塗
+                        leftTop = regionFormat.GetColCellByIndex(paintStartMonth - 1) + currentPaintRow; //開始月份不塗白色
+                        rightBottom = regionFormat.GetColCellByIndex(paintEndMonth + 1) + currentPaintRow;//結束月份不塗白色
 
                         paintRange = (msExcel.Range)regionSheet.get_Range(leftTop, rightBottom);
                         paintRange.Interior.Color = White;//原區域塗白
                     }
+                }
+                else if (paintEndMonth == paintStartMonth)
+                {
+                    if (color == Green)//    1 > 裝機總時間 > 0
+                    {
+                        leftTop = regionFormat.GetColCellByIndex(paintStartMonth) + currentPaintRow;
+                        rightBottom = regionFormat.GetColCellByIndex(paintEndMonth) + currentPaintRow;
+                    }
+                    else if (color == Orange)//    12 > 裝機總時間 > 11
+                    {
+                        leftTop = regionFormat.GetColCellByIndex(1) + currentPaintRow;
+                        rightBottom = regionFormat.GetColCellByIndex(12) + currentPaintRow;
+                    }
+                    paintRange = (msExcel.Range)regionSheet.get_Range(leftTop, rightBottom);
+                    paintRange.Interior.Color = color;
                 }
             }
         }
