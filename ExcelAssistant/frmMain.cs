@@ -20,6 +20,7 @@ namespace ExcelAssistant
         private msExcel.Workbook workBook = null;
         private string settingJson = string.Empty;
         private ExcelSetting excelSetting = new ExcelSetting();
+        private string path = string.Empty;
 
         private void loadingSetting()
         {
@@ -40,15 +41,18 @@ namespace ExcelAssistant
             File.WriteAllText(excelSettingPath, settingJson);
         }
 
-        private void bntLoad_Click(object sender, EventArgs e)
+        private void btnLoad_Click(object sender, EventArgs e)
         {
-            string path = GetOpenFileName(xlsxTitle, xlsxFilter);
+            path = GetOpenFileName(xlsxTitle, xlsxFilter);
 
             if (path == string.Empty)
                 return;
 
             textBox1.Text = path;
+        }
 
+        private void bntGenerate_Click(object sender, EventArgs e)
+        {
             try
             {
                 getExcelApp(path);
@@ -114,7 +118,6 @@ namespace ExcelAssistant
                 if (null != temp)
                     totalStartDays = temp;
                 paintStartMonth = GetDateFromExcel(totalStartDays.ToString());//轉換後，從哪一個月份開始有顏色
-
 
                 var temp2 = regionSheet.get_Range(performenceFormat.CompleteStart.Column + (performenceFormat.CompleteStart.Row + i).ToString()).Value2;//得到日子總數，要轉Date
                 if (null != temp2)

@@ -28,38 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.bntLoad = new System.Windows.Forms.Button();
+            this.bntGenerate = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // bntLoad
+            // bntGenerate
             // 
-            this.bntLoad.Location = new System.Drawing.Point(654, 14);
-            this.bntLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.bntLoad.Name = "bntLoad";
-            this.bntLoad.Size = new System.Drawing.Size(126, 67);
-            this.bntLoad.TabIndex = 0;
-            this.bntLoad.Text = "Generate";
-            this.bntLoad.UseVisualStyleBackColor = true;
-            this.bntLoad.Click += new System.EventHandler(this.bntLoad_Click);
+            this.bntGenerate.Location = new System.Drawing.Point(643, 11);
+            this.bntGenerate.Name = "bntGenerate";
+            this.bntGenerate.Size = new System.Drawing.Size(112, 56);
+            this.bntGenerate.TabIndex = 0;
+            this.bntGenerate.Text = "Generate";
+            this.bntGenerate.UseVisualStyleBackColor = true;
+            this.bntGenerate.Click += new System.EventHandler(this.bntGenerate_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 35);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox1.Location = new System.Drawing.Point(71, 29);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(636, 29);
+            this.textBox1.Size = new System.Drawing.Size(566, 25);
             this.textBox1.TabIndex = 1;
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(11, 29);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(54, 25);
+            this.btnLoad.TabIndex = 2;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 98);
+            this.ClientSize = new System.Drawing.Size(769, 82);
+            this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.bntLoad);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Controls.Add(this.bntGenerate);
             this.Name = "FrmMain";
             this.Text = "ExcelAssitant";
             this.ResumeLayout(false);
@@ -69,8 +78,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button bntLoad;
+        private System.Windows.Forms.Button bntGenerate;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnLoad;
     }
 }
 
