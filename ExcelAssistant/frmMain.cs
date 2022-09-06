@@ -23,7 +23,7 @@ namespace ExcelAssistant
 
         private void loadingSetting()
         {
-            if (!GetJsonByPath(excelSettingPath, ref settingJson))
+            if (!GetJsonByPath(ExcelSettingPath, ref settingJson))
             {
                 MessageBox.Show("Missing file : ExcelSetting.json.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -39,23 +39,22 @@ namespace ExcelAssistant
         {
             settingJson = ObjectToJson(excelSetting);
 
-            File.WriteAllText(excelSettingPath, settingJson);
+            File.WriteAllText(ExcelSettingPath, settingJson);
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            excelSetting.Setting.DefaultPath = GetOpenFileName(xlsxTitle, xlsxFilter);
+            excelSetting.Setting.DefaultPath = GetOpenFileName(XlsxTitle, XlsxFilter);
 
             if (excelSetting.Setting.DefaultPath == string.Empty)
                 return;
 
             tbFilePath.Text = excelSetting.Setting.DefaultPath;
-
         }
 
         private void bntGenerate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(excelSetting.Setting.DefaultPath) || isFileOpen(excelSetting.Setting.DefaultPath))
+            if (string.IsNullOrEmpty(excelSetting.Setting.DefaultPath) || IsFileOpen(excelSetting.Setting.DefaultPath))
                 return;
 
             try

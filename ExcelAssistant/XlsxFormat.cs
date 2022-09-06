@@ -130,8 +130,11 @@ namespace ExcelAssistant
             Column = col;
             Row = row;
         }
+      
         public string Column { get; set; }
+       
         public int Row { get; set; }
+      
         public string DotFormat { get; set; } = "0.000";
 
         public override string ToString()
@@ -143,9 +146,9 @@ namespace ExcelAssistant
 
     public static class Util
     {
-        public const string xlsxFilter = "Excel Work|*.xlsx";
-        public const string xlsxTitle = "Open 績效.xlsx File";
-        public const string excelSettingPath = @".\ExcelSetting.json";
+        public const string XlsxFilter = "Excel Work|*.xlsx";
+        public const string XlsxTitle = "Open 績效.xlsx File";
+        public const string ExcelSettingPath = @".\ExcelSetting.json";
 
         public static int Green = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Green);
         public static int Yellow = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Yellow);
@@ -250,7 +253,7 @@ namespace ExcelAssistant
             System.Diagnostics.Process.Start(path);
         }
 
-        public static bool isFileOpen(string filename)
+        public static bool IsFileOpen(string filename)
         {
             bool isOpen = true;
             while (isOpen)
