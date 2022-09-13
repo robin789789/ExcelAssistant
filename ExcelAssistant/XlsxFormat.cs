@@ -130,11 +130,11 @@ namespace ExcelAssistant
             Column = col;
             Row = row;
         }
-      
+
         public string Column { get; set; }
-       
+
         public int Row { get; set; }
-      
+
         public string DotFormat { get; set; } = "0.000";
 
         public override string ToString()

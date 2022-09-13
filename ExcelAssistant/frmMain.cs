@@ -182,6 +182,8 @@ namespace ExcelAssistant
                 }
                 else if (paintEndMonth == paintStartMonth)
                 {
+                    paintRange.Interior.Color = White;
+
                     if (color == Green)//    1 > 裝機總時間 > 0
                     {
                         leftTop = regionFormat.GetColCellByIndex(paintStartMonth) + currentPaintRow;
