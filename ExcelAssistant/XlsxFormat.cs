@@ -220,7 +220,7 @@ namespace ExcelAssistant
             {
                 return Orange;
             }
-            else if (target > 12)
+            else if (target >= 12)
             {
                 return Red;
             }

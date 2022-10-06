@@ -118,12 +118,15 @@ namespace ExcelAssistant
             double totalStartDays = 0, totalEndDays, totalMonth = 0;
             int color, paintStartMonth, paintEndMonth;
             string leftTop, rightBottom, currentPaintRow;
-
-            for (int i = 0; i < regionFormat.GetRowsCount(); i++)
+            int totalRows = regionFormat.GetRowsCount();
+            for (int i = 0; i < totalRows; i++)
             {
                 var tempTotalMonth = performenceSheet.get_Range(performenceFormat.RangeStart.Column + (performenceFormat.RangeStart.Row + i).ToString()).Value2;//已裝月份
-                if (null != tempTotalMonth)
-                    totalMonth = tempTotalMonth;
+
+                if (null == tempTotalMonth)
+                    return;
+
+                totalMonth = tempTotalMonth;
 
                 color = GetColorByCondition(totalMonth);//選擇顏色
 
